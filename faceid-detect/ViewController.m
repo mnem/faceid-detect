@@ -25,7 +25,6 @@
 {
     [super viewDidLoad];
     [self updateStatus];
-    [self storeItemInKeychain];
 }
 
 - (IBAction)onRefresh:(UIButton *)sender
@@ -33,9 +32,23 @@
     [self updateStatus];
 }
 
+- (IBAction)onStoreItem:(UIButton *)sender {
+    [self storeItemInKeychain];
+}
+
 - (IBAction)onFetchItem:(UIButton *)sender
 {
     [self retrieveItemInKeychain];
+}
+
+- (IBAction)onLocalAuthentication:(id)sender {
+    LAContext *context = [[LAContext alloc] init];
+    LAPolicy policy = LAPolicyDeviceOwnerAuthenticationWithBiometrics;
+    if ([context canEvaluatePolicy:policy error:nil]) {
+        [context evaluatePolicy:policy localizedReason:@"This is the localizedReason" reply:^(BOOL success, NSError * _Nullable error) {
+            NSLog(@"Success: %c, error: %@", success["NY"], error);
+        }];
+    }
 }
 
 - (void)updateStatus
@@ -73,7 +86,10 @@
                                                              &acError);
     NSAssert(acError == nil, @"Could not create access control object: %@", acError);
 
-    NSData *data = [@"It's oh so quiet, shhh, shhh" dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *date = [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                                    dateStyle:NSDateFormatterShortStyle
+                                                    timeStyle:NSDateFormatterFullStyle];
+    NSData *data = [[NSString stringWithFormat:@"It's oh so quiet, shhh, shhh. %@", date] dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *insertQuery = @{(id)kSecClass: (id)kSecClassGenericPassword,
                                   (id)kSecAttrAccessControl: (__bridge_transfer id)ac,
                                   (id)kSecValueData: data,

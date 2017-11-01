@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="h5V-VH-nw0">
-                                <rect key="frame" x="100.5" y="258.5" width="175" height="150"/>
+                                <rect key="frame" x="100.5" y="228.5" width="175" height="210"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has biometrics:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeg-Fd-sbj">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="30"/>
@@ -45,11 +45,25 @@
                                             <action selector="onRefresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NMI-7M-5As"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7Q-FU-6sX">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdk-Lm-b7G">
                                         <rect key="frame" x="0.0" y="120" width="175" height="30"/>
+                                        <state key="normal" title="Store biom keychain item"/>
+                                        <connections>
+                                            <action selector="onStoreItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CXa-fI-0hh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7Q-FU-6sX">
+                                        <rect key="frame" x="0.0" y="150" width="175" height="30"/>
                                         <state key="normal" title="Fetch biom keychain item"/>
                                         <connections>
                                             <action selector="onFetchItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GgX-Jj-1cn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYo-bU-ORf">
+                                        <rect key="frame" x="0.0" y="180" width="175" height="30"/>
+                                        <state key="normal" title="Local auth"/>
+                                        <connections>
+                                            <action selector="onLocalAuthentication:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6rE-Zy-cte"/>
                                         </connections>
                                     </button>
                                 </subviews>
